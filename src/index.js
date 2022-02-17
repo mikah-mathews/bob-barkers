@@ -76,8 +76,9 @@ $(document).ready(function() {
     $("#video")[0].src += "?autoplay=1";
     loadScreen();
     let searchCategory = $("input:radio[name=searchCategory]:checked").val();
+    const apiKey = $("#api-key").val();
 
-    AmazonService.makeAPICall(searchCategory).then(function(response) {
+    AmazonService.makeAPICall(searchCategory, apiKey).then(function(response) {
       if (response instanceof Error) {
         throw Error(`There was an unexpected error: ${response.message}`);
       }
